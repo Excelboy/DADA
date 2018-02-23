@@ -8,13 +8,14 @@ ui <- fluidPage(
   tags$head(
 	  tags$style(
 		  HTML(
-				".checkbox-inline { 
-				margin-left: 0px;
-				margin-right: 10px;
+				"
+        .checkbox-inline { 
+				  margin-left: 0px;
+				  margin-right: 10px;
 				}
 				.checkbox-inline+.checkbox-inline {
-				margin-left: 0px;
-				margin-right: 10px;
+				  margin-left: 0px;
+				  margin-right: 10px;
 				}
 				"
 			)
@@ -29,6 +30,13 @@ ui <- fluidPage(
         choiceValues=levels(dat$Skole),
         selected=levels(dat$Skole),
         inline=TRUE
+      ),
+      checkboxGroupInput(inputId="trinn",
+      	label="Trinn",
+      	choiceNames=levels(dat$Trinn),
+      	choiceValues=levels(dat$Trinn),
+      	selected=levels(dat$Trinn),
+      	inline=TRUE
       ),
       checkboxGroupInput(inputId="mnd",
         label="Fødselsmåned",
@@ -47,7 +55,7 @@ ui <- fluidPage(
     )
   )
 )
-"Velg responsvariabler [0, 12], hvor 0 er \"ikke oppgitt\""
+
 server <- function(input, output) {
   
   output$hist <- renderPlot({
@@ -57,8 +65,9 @@ server <- function(input, output) {
     spm <- paste0("X", z)
     sel <- dat[
        dat$Skole %in% c(input$skole) & 
-         dat$F.mnd %in% c(input$mnd),
-       spm , drop=FALSE]
+       dat$Trinn %in% c(input$trinn) & 
+       dat$F.mnd %in% c(input$mnd),
+       spm, drop=FALSE]
     
     barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)
     
