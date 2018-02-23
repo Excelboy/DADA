@@ -4,6 +4,23 @@ library(shiny)
 dat <- readRDS("data/bioint.rds")
 
 ui <- fluidPage(
+	# modifisere checkbox-layout slik at det ser litt penere ut
+  tags$head(
+	  tags$style(
+		  HTML(
+				".checkbox-inline { 
+				margin-left: 0px;
+				margin-right: 10px;
+				}
+				.checkbox-inline+.checkbox-inline {
+				margin-left: 0px;
+				margin-right: 10px;
+				}
+				"
+			)
+		) 
+	),
+	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),
   sidebarLayout(
     sidebarPanel(
       checkboxGroupInput(inputId="skole",
@@ -11,25 +28,26 @@ ui <- fluidPage(
         choiceNames=levels(dat$Skole),
         choiceValues=levels(dat$Skole),
         selected=levels(dat$Skole),
-        inline=FALSE
+        inline=TRUE
       ),
       checkboxGroupInput(inputId="mnd",
         label="Fødselsmåned",
         choiceNames=levels(dat$F.mnd),
         choiceValues=levels(dat$F.mnd),
         selected=levels(dat$F.mnd),
-        inline=FALSE
+        inline=TRUE
       ),
-      textInput(inputId = "spm", 
-        label = "Velg responsvariabler [1, 67]", 
-        value = "1, 3:5, 7, 9")
-      ),
+      textInput(inputId="spm", 
+        label="Velg responsvariabler [1, 67]", 
+        value="1, 3:5, 7, 9"
+      )
+    ),
     mainPanel(
     	plotOutput("hist")
     )
   )
 )
-
+"Velg responsvariabler [0, 12], hvor 0 er \"ikke oppgitt\""
 server <- function(input, output) {
   
   output$hist <- renderPlot({
