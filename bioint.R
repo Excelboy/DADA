@@ -1,52 +1,48 @@
 setwd("~/Documents/R/shiny/bioint")
 library(shiny)
 
+source("extra.style.r")
 dat <- readRDS("data/bioint.rds")
 
+F.mnd.nam <- F.mnd.val <- levels(dat$F.mnd)[c(2:13, 1)]
+F.mnd.nam[F.mnd.nam == 0] <- "NA"
+
 ui <- fluidPage(
-	# modifisere checkbox-layout slik at det ser litt penere ut
-  tags$head(
-	  tags$style(
-		  HTML(
-				"
-        .checkbox-inline { 
-				  margin-left: 0px;
-				  margin-right: 10px;
-				}
-				.checkbox-inline+.checkbox-inline {
-				  margin-left: 0px;
-				  margin-right: 10px;
-				}
-				"
-			)
-		) 
-	),
+  extra.style,
 	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),
   sidebarLayout(
     sidebarPanel(
-      checkboxGroupInput(inputId="skole",
-        label="Skole",
-        choiceNames=levels(dat$Skole),
-        choiceValues=levels(dat$Skole),
-        selected=levels(dat$Skole),
-        inline=TRUE
-      ),
+    	h5("Skole"),
+    	tags$div(class="multicol", 
+    		checkboxGroupInput(inputId="skole",
+          label=NULL,
+          choiceNames=levels(dat$Skole),
+          choiceValues=levels(dat$Skole),
+          selected=levels(dat$Skole),
+          inline=TRUE
+    		)
+    	),
+      h5("Trinn"),
       checkboxGroupInput(inputId="trinn",
-      	label="Trinn",
+      	label=NULL,
       	choiceNames=levels(dat$Trinn),
       	choiceValues=levels(dat$Trinn),
       	selected=levels(dat$Trinn),
       	inline=TRUE
       ),
-      checkboxGroupInput(inputId="mnd",
-        label="Fødselsmåned",
-        choiceNames=levels(dat$F.mnd),
-        choiceValues=levels(dat$F.mnd),
-        selected=levels(dat$F.mnd),
-        inline=TRUE
+      h5("Fødselsmåned"),
+      tags$div(class="multicol2", 
+        checkboxGroupInput(inputId="mnd",
+          label=NULL,
+          choiceNames=F.mnd.nam,
+          choiceValues=F.mnd.val,
+          selected=F.mnd.val,
+          inline=FALSE
+        )
       ),
-      textInput(inputId="spm", 
-        label="Velg responsvariabler [1, 67]", 
+    	h5("Velg responsvariabler [1, 61]"),
+    	textInput(inputId="spm", 
+        label=NULL, 
         value="1, 3:5, 7, 9"
       )
     ),
