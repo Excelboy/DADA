@@ -1,11 +1,11 @@
 /*form-group shiny-input-checkboxgroup shiny-input-container shiny-input-container-inline*/
 
-@import url("//fonts.googleapis.com/css?family=Raleway:bold,regular|Quattrocento+Sans:bold,regular|PT+Mono");
+@import url("//fonts.googleapis.com/css?family=Quattrocento+Sans:bold,regular,bolditalic|PT+Mono");
 
 body {
   font-family: 'PT Mono', 'Arial', Sans-serif;
   font-weight: normal;
-  background-color: #fff;
+  background-color: white;
 }
 
 h2 {
@@ -19,6 +19,35 @@ h5 {
   font-family: 'Quattrocento Sans', 'Arial', Sans-serif;
   font-weight: bold;
   line-height: 0.25;
+}
+
+.help-block {
+  font-family: 'Quattrocento Sans', 'Arial', Sans-serif;
+  font-style: italic;
+}
+
+.topmar {
+  margin-top: 20px;
+}
+
+.well {
+  background-color: #f0f0f0;
+}
+
+.tabbable > .nav > li > a { 
+  background-color: #e8e8e8;
+  color: #999999
+}
+
+.tabbable > .nav > li[class=active] > a {
+  background-color: #f0f0f0;
+  color: #27c93a
+}
+
+.nav-tabs {
+  font-family: 'Quattrocento Sans', 'Arial', Sans-serif;
+  font-weight: bold;
+  font-size: medium
 }
 
 .form-group {
@@ -49,4 +78,3 @@ h5 {
   -moz-column-fill: auto;
   -column-fill: auto;
 } 
-
