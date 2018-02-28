@@ -1,0 +1,52 @@
+/*form-group shiny-input-checkboxgroup shiny-input-container shiny-input-container-inline*/
+
+@import url("//fonts.googleapis.com/css?family=Raleway:bold,regular|Quattrocento+Sans:bold,regular|PT+Mono");
+
+body {
+  font-family: 'PT Mono', 'Arial', Sans-serif;
+  font-weight: normal;
+  background-color: #fff;
+}
+
+h2 {
+  font-family: 'Quattrocento Sans', 'Arial', Sans-serif;
+  font-weight: bold;
+  line-height: 1.1;
+  color: #27c93a;
+}
+
+h5 {
+  font-family: 'Quattrocento Sans', 'Arial', Sans-serif;
+  font-weight: bold;
+  line-height: 0.25;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.checkbox-inline { 
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.checkbox-inline+.checkbox-inline {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+.checkbox {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.multicol { 
+  height: 100%;
+  margin-bottom: 20px;
+  -webkit-column-count: 5; /* Chrome, Safari, Opera */ 
+  -moz-column-count: 5;    /* Firefox */ 
+  column-count: 5; 
+  -moz-column-fill: auto;
+  -column-fill: auto;
+} 
+

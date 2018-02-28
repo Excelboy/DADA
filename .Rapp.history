@@ -1,0 +1,5969 @@
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+ui <- fluidPage(#
+  sliderInput(inputId = "num", #
+    label = "Choose a number", #
+    value = 25, min = 1, max = 100),#
+  plotOutput("hist")#
+)#
+#
+server <- function(input, output) {#
+  dat <- readRDS("data/bioint.rds")#
+  output$hist <- renderPlot({#
+    hist(dat$X1[1:input$num])#
+  })#
+}#
+#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+ui <- fluidPage(#
+  sliderInput(inputId = "num", #
+    label = "Choose a number", #
+    value = 25, min = 1, max = 100),#
+  plotOutput("hist")#
+)#
+#
+server <- function(input, output) {#
+  dat <- readRDS("data/bioint.rds")#
+  output$hist <- renderPlot({#
+    table(dat$X1[1:input$num])#
+  })#
+}#
+#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+ui <- fluidPage(#
+  sliderInput(inputId = "num", #
+    label = "Choose a number", #
+    value = 25, min = 1, max = 100),#
+  plotOutput("hist")#
+)#
+#
+server <- function(input, output) {#
+  dat <- readRDS("data/bioint.rds")#
+  output$hist <- renderPlot({#
+    table(dat$X1[1:input$num])#
+  })#
+}#
+#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+ui <- fluidPage(#
+  sliderInput(inputId = "num", #
+    label = "Choose a number", #
+    value = 25, min = 1, max = 100),#
+  plotOutput("hist")#
+)#
+#
+server <- function(input, output) {#
+  dat <- readRDS("data/bioint.rds")#
+  output$hist <- renderPlot({#
+    plot(dat$X1[1:input$num])#
+  })#
+}#
+#
+shinyApp(ui = ui, server = server)
+z <- "1, 3:5, 7, 9"
+eval(z)
+parse(z)
+parse(eval(z))
+eval(z)
+paste0("(", z, ")")
+eval(paste0("(", z, ")"))
+parse(paste0("(", z, ")"))
+eval(paste0("c(", z, ")"))
+parse(paste0("c(", z, ")"))
+expr(paste0("c(", z, ")"))
+paste0("c(", z, ")")
+expr(paste0("c(", z, ")"))
+evalq(paste0("c(", z, ")"))
+expression(paste0("c(", z, ")"))
+eval(expression(paste0("c(", z, ")")))
+parse(expression(paste0("c(", z, ")")))
+paste0("c(", z, ")")
+deparse(paste0("c(", z, ")"))
+z <- "1, 3:5, 7, 9"#
+z <- paste0("c(", z, ")")
+z
+deparse(z)
+parse(z)
+parse(text=z)
+eval(parse(text=z))
+z <- "1, 3:5, 7, 9"#
+z <- paste0("c(", z, ")")#
+z.int <- eval(parse(text=z))
+z.int
+bioint.h <- readRDS("bioint.rds")
+saveRDS(bioint.h, file="bioint.rds", compress="bzip2")
+bioint.h <- readRDS("bioint.rds")
+str(bioint.h)
+foo.l <- melt(bioint.h, id=c("Kj", "Trinn", "F.hv", "F.åt"), #
+  measure=9:67, value.name="likert")#
+foo.l$value <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)#
+#
+XT <- xtabs( ~ likert + Trinn + F.åt, data=foo.l)#
+XT <- prop.table(XT, 2)[, , which(dimnames(XT)[[3]] != 0)]#
+#
+par(mfrow=c(4, 1), mar=c(2, 3, 2, 1))#
+apply(as.array(XT), 3, function(x) {#
+	barplot(x, beside=TRUE, xlab="", ylab="Prop")#
+    }#
+)#
+par(mfrow=c(1, 1), mar=c(4, 4, 3, 2))#
+#
+XT <- xtabs( ~ likert + Trinn, data=foo.l)#
+barplot(prop.table(XT, 2),#
+        beside=TRUE,#
+        legend=TRUE,#
+        xlab="Klassetrinn",#
+        ylab="Prop",#
+        args.legend=list(horiz=TRUE, inset=-0.15, x="top", bty="n"))
+str(foo.l)
+x <- 1:9
+x[1:3]
+x[c(1:3)]
+x[c(1:3, 5)]
+x[c(1:3, -5)]
+x[c(-5)]
+x[c(-1:5)]
+x[c(-1:-5)]
+x[c(-(1:5))]
+x[c(-c(1:5))]
+x[c(-1:-5)]
+x[c(-3:-5)]
+setwd("~/Documents/R")
+foo.l <- melt(bioint.h, id=c("Kj", "Trinn", "F.hv", "F.åt"),
+measure=c("X1", "X2"), value.name="likert")
+foo.l$value <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)
+str(foo.l)
+foo.l <- melt(bioint.h[1:9,], id=c("Kj", "Trinn", "F.hv", "F.åt"),
+measure=c("X1", "X2"), value.name="likert")
+foo.l$value <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)
+foo.l
+foo.l <- melt(bioint.h[1:9,], id=c("Kj", "Trinn", "F.hv", "F.åt"), #
+  measure=c("X1", "X2"), value.name="likert")
+foo.l
+foo.l <- melt(bioint.h[1:9,], id=c("Kj", "Trinn", "F.hv", "F.åt"),
+measure=c("X1", "X2"), value.name="likert")
+foo.l$likert <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)
+foo.l
+plot(foo.l$likert)
+plot(foo.l$likert)
+plot(table(foo.l$likert))
+plot(as.table(foo.l$likert))
+plot(table(foo.l$likert))
+plot(prop.table(foo.l$likert))
+plot(table(foo.l$likert))
+methods(plot)
+plot(foo.l$likert)
+barplot(foo.l$likert)
+barplot(table(foo.l$likert))
+barplot(table(foo.l$likert), density=TRUE)
+barplot(table(foo.l$likert), density=9)
+barplot(table(foo.l$likert), density=19)
+barplot(table(foo.l$likert), density=19, col=1)
+barplot(table(foo.l$likert), density=20, col=1)
+barplot(prop.table(table(foo.l$likert)), density=20, col=1)
+barplot(prop.table(table(foo.l$likert)), col=1)
+barplot(prop.table(table(foo.l$likert)), col="white")
+barplot(prop.table(table(foo.l$likert)), col="white", lwd=2)
+barplot(prop.table(table(foo.l$likert)), density=9, col=1)
+barplot(prop.table(table(foo.l$likert)), density=9, angle=90, col=1)
+barplot(prop.table(table(foo.l$likert)), density=9, angle=0, col=1)
+barplot(prop.table(table(foo.l$likert)), density=9, angle=10, col=1)
+barplot(prop.table(table(foo.l$likert)), density=9, angle=20, col=1)
+barplot(prop.table(table(foo.l$likert)), density=9, angle=30, col=1)
+barplot(prop.table(table(foo.l$likert)), col="darkgrey")
+barplot(prop.table(table(foo.l$likert)), col="lightgrey")
+barplot(prop.table(table(foo.l$likert)), col="grey80")
+barplot(prop.table(table(foo.l$likert)), col="grey90")
+barplot(prop.table(table(foo.l$likert)), col="grey95")
+barplot(prop.table(table(foo.l$likert)), col="grey15")
+barplot(prop.table(table(foo.l$likert)), col="grey25")
+barplot(prop.table(table(foo.l$likert)), col="grey50")
+barplot(prop.table(table(foo.l$likert)), col="grey10")
+barplot(prop.table(table(foo.l$likert)), col="grey90")
+barplot(prop.table(table(foo.l$likert)), col="grey90", space=5)
+barplot(prop.table(table(foo.l$likert)), col="grey90", space=2)
+barplot(prop.table(table(foo.l$likert)), col=1, space=2)
+barplot(prop.table(table(foo.l$likert)), col=1, space=1)
+barplot(prop.table(table(foo.l$likert)), col="white", space=1)
+barplot(prop.table(table(foo.l$likert)), density=20, space=1)
+barplot(prop.table(table(foo.l$likert)), density=20, col=1, space=1)
+barplot(prop.table(table(foo.l$likert)), density=10, col=1, space=1)
+barplot(prop.table(table(foo.l$likert)), col=1, space=1)
+barplot(prop.table(table(foo.l$likert)), col=2, space=1)
+barplot(prop.table(table(foo.l$likert)), col=3, space=1)
+barplot(prop.table(table(foo.l$likert)), col=4, space=1)
+barplot(prop.table(table(foo.l$likert)), col=5, space=1)
+barplot(prop.table(table(foo.l$likert)), col=6, space=1)
+barplot(prop.table(table(foo.l$likert)), col=7, space=1)
+barplot(prop.table(table(foo.l$likert)), col=8, space=1)
+barplot(prop.table(table(foo.l$likert)), col="white", space=1)
+foo.l[foo.l$Kj %in% c(1, 2), ]
+foo.l[foo.l$Kj %in% c("1", "2"), ]
+foo.l[foo.l$Kj %in% c("1"), ]
+foo.l <- melt(bioint.h[1:9,], id=c("Kj", "Trinn", "F.aar", "F.mnd", "F.hv", "F.åt"),
+measure=c("X1", "X2"), value.name="likert")
+foo.l$likert <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)
+foo.l
+foo.l <- melt(bioint.h[1:9,], id=c("Kj", "Trinn", "F.aar", "F.mnd", "F.hv", "F.åt"), #
+  measure=c("X1", "X2"), value.name="likert")#
+foo.l$likert <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)
+XT <- xtabs( ~ likert + Trinn + F.åt, data=foo.l)
+XT
+foo.l
+bioint.h[1,]
+bioint.h[1:4,]
+foo.l[foo.l$Kj %in% c("1") & foo.l$F.mnd %in% c("1"), ]
+foo.l
+foo.l[foo.l$Kj %in% c("1") & foo.l$F.mnd %in% c("10"), ]
+foo.l[foo.l$Kj %in% c("1") & foo.l$F.mnd %in% c(10), ]
+foo.l[foo.l$Kj %in% c("1") & foo.l$F.mnd %in% c("7"), ]
+foo.l[foo.l$Kj %in% c("1") & foo.l$F.mnd %in% c("5"), ]
+bioint.h[bioint.h$Kj %in% c("1") & foo.l$F.mnd %in% c("5"), ][1,]
+bioint.h[bioint.h$Kj %in% c("1") & bioint.h$F.mnd %in% c("5"), ][1,]
+bioint.h[bioint.h$Kj %in% c("1") & bioint.h$F.mnd %in% c("5"), , drop=FALSE][1,]
+bioint.h[bioint.h$Kj %in% c("1") & bioint.h$F.mnd %in% c("5"), , drop=FALSE]
+bioint.h[#
+  bioint.h$Kj %in% c("1") & bioint.h$F.mnd %in% c("5"), , drop=FALSE]
+bioint.h[#
+  bioint.h$Skole %in% c("1") & #
+  bioint.h$Trinn %in% c("5") &#
+  bioint.h$Klasse %in% c("5") &#
+  bioint.h$Kj %in% c("5") &#
+  bioint.h$F.aar %in% c("5") &#
+  bioint.h$F.mnd %in% c("5"),#
+  c("X1", "X2") , drop=FALSE]
+bioint.h$Skole
+levels(bioint.h$Skole)
+bioint.h[#
+  bioint.h$Skole %in% c(levels(bioint.h$Skole)) & #
+  bioint.h$Trinn %in% c(levels(bioint.h$Trinn)) &#
+  bioint.h$Klasse %in% c(levels(bioint.h$Klasse)) &#
+  bioint.h$Kj %in% c(levels(bioint.h$Kj)) &#
+  bioint.h$F.aar %in% c(levels(bioint.h$F.aar)) &#
+  bioint.h$F.mnd %in% c(levels(bioint.h$F.mnd)),#
+  c("X1", "X2") , drop=FALSE]
+sel <- bioint.h[#
+  bioint.h$Skole %in% c(levels(bioint.h$Skole)) & #
+  bioint.h$Trinn %in% c(levels(bioint.h$Trinn)) &#
+  bioint.h$Klasse %in% c(levels(bioint.h$Klasse)) &#
+  bioint.h$Kj %in% c(levels(bioint.h$Kj)) &#
+  bioint.h$F.aar %in% c(levels(bioint.h$F.aar)) &#
+  bioint.h$F.mnd %in% c(levels(bioint.h$F.mnd)),#
+  c("X1", "X2") , drop=FALSE]
+barplot(prop.table(table(sel)), col="white", space=1)
+barplot(prop.table(table(unlist(sel))), col="white", space=1)
+barplot(prop.table(table(unlist(sel))), col="grey95", space=1)
+barplot(prop.table(table(unlist(sel))), col="grey99", space=1)
+barplot(prop.table(table(unlist(sel))), col="grey98", space=1)
+barplot(prop.table(table(unlist(sel))), col="grey97", space=1)
+barplot(prop.table(table(unlist(sel))), col="grey97", space=0.5)
+barplot(prop.table(table(unlist(sel))), col="grey97")
+barplot(prop.table(table(unlist(sel))), col="grey97", space=0.5)
+barplot(prop.table(table(unlist(sel))), col="grey97", space=1/3)
+barplot(prop.table(table(unlist(sel))), col="grey97", space=2/3)
+barplot(prop.table(table(unlist(sel))), density=10, col="grey97", space=2/3)
+barplot(prop.table(table(unlist(sel))), density=20, col="grey97", space=2/3)
+barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)
+foo.l <- melt(bioint.h[1:9,], #
+  id=c("Skole", "Trinn","Klasse", "Kj", "F.aar", "F.mnd", "F.hv", "F.åt"), #
+  measure=c("X1", "X2"), value.name="likert")#
+foo.l$likert <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)#
+#
+XT <- xtabs( ~ likert + Trinn + F.åt, data=foo.l)#
+XT <- prop.table(XT, 2)[, , which(dimnames(XT)[[3]] != 0)]#
+#
+par(mfrow=c(4, 1), mar=c(2, 3, 2, 1))#
+apply(as.array(XT), 3, function(x) {#
+	barplot(x, beside=TRUE, xlab="", ylab="Prop")#
+    }#
+)#
+par(mfrow=c(1, 1), mar=c(4, 4, 3, 2))
+colnames(bioint.h)
+grep("X", colnames(bioint.h))
+grep("^X", colnames(bioint.h))
+grep("^X[0-9]{1,2}$", colnames(bioint.h))
+foo.l <- melt(bioint.h[1:9,], #
+  id=c("Skole", "Trinn","Klasse", "Kj", "F.aar", "F.mnd", "F.hv", "F.åt"), #
+  measure=grep("^X[0-9]{1,2}$", colnames(bioint.h)), value.name="likert")#
+foo.l$likert <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)#
+#
+XT <- xtabs( ~ likert + Trinn + F.åt, data=foo.l)#
+XT <- prop.table(XT, 2)[, , which(dimnames(XT)[[3]] != 0)]#
+#
+par(mfrow=c(4, 1), mar=c(2, 3, 2, 1))#
+apply(as.array(XT), 3, function(x) {#
+	barplot(x, beside=TRUE, xlab="", ylab="Prop")#
+    }#
+)#
+par(mfrow=c(1, 1), mar=c(4, 4, 3, 2))
+foo.l <- melt(bioint.h, #
+  id=c("Skole", "Trinn","Klasse", "Kj", "F.aar", "F.mnd", "F.hv", "F.åt"), #
+  measure=grep("^X[0-9]{1,2}$", colnames(bioint.h)), value.name="likert")#
+foo.l$likert <- factor(as.numeric(foo.l$likert), ordered=TRUE, levels=1:4)#
+#
+XT <- xtabs( ~ likert + Trinn + F.åt, data=foo.l)#
+XT <- prop.table(XT, 2)[, , which(dimnames(XT)[[3]] != 0)]#
+#
+par(mfrow=c(4, 1), mar=c(2, 3, 2, 1))#
+apply(as.array(XT), 3, function(x) {#
+	barplot(x, beside=TRUE, xlab="", ylab="Prop")#
+    }#
+)#
+par(mfrow=c(1, 1), mar=c(4, 4, 3, 2))
+sel <- bioint.h[#
+  bioint.h$Skole %in% c(levels(bioint.h$Skole)) & #
+  bioint.h$Trinn %in% c(levels(bioint.h$Trinn)) &#
+  bioint.h$Klasse %in% c(levels(bioint.h$Klasse)) &#
+  bioint.h$Kj %in% c(levels(bioint.h$Kj)) &#
+  bioint.h$F.aar %in% c(levels(bioint.h$F.aar)) &#
+  bioint.h$F.mnd %in% c(levels(bioint.h$F.mnd)),#
+  c("X1", "X2") , drop=FALSE]#
+#
+barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)
+df = data.frame(PNUM = c(1,1,1,1,2,2,2,2),#
+                indate=as.Date(c("2016-01-03","2016-05-05","2017-02-03",#
+                                 "2017-06-07","2016-01-03","2016-05-05",#
+                                 "2017-02-03","2017-06-07")),#
+                Inpatient=c(0,1,0,1,1,1,1,0),#
+                AnE=c(1,0,1,0,0,0,0,1))
+library(TTR)
+SMA(df$Inpatient, 10)
+SMA(df$Inpatient, 4)
+SMA(df$Inpatient, 4)*4
+SMA(df$Inpatient, 5)*4
+SMA(df$Inpatient, 6)*4
+SMA(df$Inpatient, 4)*4
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+												 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+    	h5("Skole"),#
+    	tags$div(class="multicol", #
+    		checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=TRUE#
+    		)#
+    	),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+      	label=NULL,#
+      	choiceNames=levels(dat$Trinn),#
+      	choiceValues=levels(dat$Trinn),#
+      	selected=levels(dat$Trinn),#
+      	inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+    	h5("Velg responsvariabler [1, 61]"),#
+    	textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+    	plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+												 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+    	h5("Skole"),#
+    	tags$div(class="multicol", #
+    		checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=TRUE#
+    		)#
+    	),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+      	label=NULL,#
+      	choiceNames=levels(dat$Trinn),#
+      	choiceValues=levels(dat$Trinn),#
+      	selected=levels(dat$Trinn),#
+      	inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+    	h5("Velg responsvariabler [1, 61]"),#
+    	textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+    	plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+												 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+    	h5("Skole"),#
+    	tags$div(class="multicol", #
+    		checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+    		)#
+    	),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+      	label=NULL,#
+      	choiceNames=levels(dat$Trinn),#
+      	choiceValues=levels(dat$Trinn),#
+      	selected=levels(dat$Trinn),#
+      	inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+    	h5("Velg responsvariabler [1, 61]"),#
+    	textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+    	plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+												 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+    	h5("Skole"),#
+    	tags$div(class="multicol", #
+    		checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+    		)#
+    	),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+      	label=NULL,#
+      	choiceNames=levels(dat$Trinn),#
+      	choiceValues=levels(dat$Trinn),#
+      	selected=levels(dat$Trinn),#
+      	inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+    	h5("Velg responsvariabler [1, 61]"),#
+    	textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+    	plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+												 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+    	h5("Skole"),#
+    	tags$div(class="multicol", #
+    		checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+    		)#
+    	),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+      	label=NULL,#
+      	choiceNames=levels(dat$Trinn),#
+      	choiceValues=levels(dat$Trinn),#
+      	selected=levels(dat$Trinn),#
+      	inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+    	h5("Velg responsvariabler [1, 61]"),#
+    	textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+    	plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+												 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+	titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+    	h5("Skole"),#
+    	tags$div(class="multicol", #
+    		checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+    		)#
+    	),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+      	label=NULL,#
+      	choiceNames=levels(dat$Trinn),#
+      	choiceValues=levels(dat$Trinn),#
+      	selected=levels(dat$Trinn),#
+      	inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+    	h5("Velg responsvariabler [1, 61]"),#
+    	textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+    	plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+                                                 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+    titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+colnames(dat)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+F.mnd.val <- levels(dat$F.mnd)#
+F.mnd.val <- F.mnd.val[c(which(F.mnd.val != 0), #
+                                                 which(F.mnd.val == 0))]#
+F.mnd.nam <- F.mnd.val#
+F.mnd.nam[F.mnd.nam == 0] <- "NA"#
+#
+ui <- fluidPage(#
+  extra.style,#
+    titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=F.mnd.nam,#
+          choiceValues=F.mnd.val,#
+          selected=F.mnd.val,#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+colnames(dat)
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(val) {#
+	val[val == 0] <- "NA"#
+	val#
+}
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}
+val(dat$F.mnd)
+nam(dat$F.mnd)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Klasse),#
+        choiceValues=val(dat$Klasse),#
+        selected=val(dat$Klasse),#
+        inline=FALSE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$kjønn %in% c(input$kjønn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=FALSE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$kjønn %in% c(input$kjønn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+colnames(dat)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+library(shiny)#
+#
+extra.style <- tagList(#
+  # modifisere checkbox-layout slik at det ser litt penere ut#
+  tags$head(#
+    tags$style(#
+      HTML(#
+        "#
+          .checkbox-inline { #
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          .checkbox-inline+.checkbox-inline {#
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          div.checkbox {#
+            margin-top: 0px;#
+            margin-bottom: 5px;#
+          }#
+          .multicol { #
+            height: 100%;#
+            margin-bottom: 0px;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol2 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol3 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          "#
+      )#
+    ) #
+  )#
+)
+extra.style
+extra.style
+extra.style()
+extra.style()
+print(extra.style)
+dput(extra.style)
+cat(extra.style)
+tags$head(#
+    tags$style(#
+      HTML(#
+        "#
+          .checkbox-inline { #
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          .checkbox-inline+.checkbox-inline {#
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          div.checkbox {#
+            margin-top: 0px;#
+            margin-bottom: 5px;#
+          }#
+          .multicol { #
+            height: 100%;#
+            margin-bottom: 0px;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol2 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol3 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          "#
+      )#
+    ) #
+  )
+HTML(#
+        "#
+          .checkbox-inline { #
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          .checkbox-inline+.checkbox-inline {#
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          div.checkbox {#
+            margin-top: 0px;#
+            margin-bottom: 5px;#
+          }#
+          .multicol { #
+            height: 100%;#
+            margin-bottom: 0px;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol2 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol3 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          "#
+      )
+tags$style(#
+      HTML(#
+        "#
+          .checkbox-inline { #
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          .checkbox-inline+.checkbox-inline {#
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          div.checkbox {#
+            margin-top: 0px;#
+            margin-bottom: 5px;#
+          }#
+          .multicol { #
+            height: 100%;#
+            margin-bottom: 0px;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol2 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol3 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          "#
+      )#
+    )
+tags$head(#
+    tags$style(#
+      HTML(#
+        "#
+          .checkbox-inline { #
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          .checkbox-inline+.checkbox-inline {#
+            margin-left: 0px;#
+            margin-right: 10px;#
+          }#
+          div.checkbox {#
+            margin-top: 0px;#
+            margin-bottom: 5px;#
+          }#
+          .multicol { #
+            height: 100%;#
+            margin-bottom: 0px;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol2 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          .multicol3 { #
+            height: 100%;#
+            -webkit-column-count: 5; /* Chrome, Safari, Opera */ #
+            -moz-column-count: 5;    /* Firefox */ #
+            column-count: 5; #
+            -moz-column-fill: auto;#
+            -column-fill: auto;#
+            margin-bottom: 20px;#
+          } #
+          "#
+      )#
+    ) #
+  )
+as.list(extra.style)
+h5("Velg responsvariabler [1, 61]")
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("extra.style.r")#
+dat <- readRDS("data/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("styles.css"),#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("supp/extra.style.r")#
+dat <- readRDS("supp/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("supp/extra.style.r")#
+dat <- readRDS("supp/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("supp/extra.style.r")#
+dat <- readRDS("supp/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+titlePanel
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("supp/extra.style.r")#
+dat <- readRDS("supp/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("supp/extra.style.r")#
+dat <- readRDS("supp/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  extra.style,#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+source("supp/extra.style.r")#
+dat <- readRDS("supp/bioint.rds")#
+colnames(dat)#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+h4("Skole"),
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h4("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h4("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
+setwd("~/Documents/R/shiny/bioint")#
+library(shiny)#
+#
+dat <- readRDS("supp/bioint.rds")#
+#
+val <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev#
+}#
+#
+nam <- function(lev) {#
+	lev <- levels(lev)#
+	lev <- lev[c(which(lev != 0), which(lev == 0))]#
+	lev[lev == 0] <- "NA"#
+	lev#
+}#
+#
+ui <- fluidPage(#
+  includeCSS("supp/styles.css"),#
+  titlePanel("Responser fra NOU: \"Interesse for biologifagene\""),#
+  sidebarLayout(#
+    sidebarPanel(#
+      h5("Skole"),#
+      tags$div(class="multicol", #
+        checkboxGroupInput(inputId="skole",#
+          label=NULL,#
+          choiceNames=levels(dat$Skole),#
+          choiceValues=levels(dat$Skole),#
+          selected=levels(dat$Skole),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Trinn"),#
+      checkboxGroupInput(inputId="trinn",#
+        label=NULL,#
+        choiceNames=levels(dat$Trinn),#
+        choiceValues=levels(dat$Trinn),#
+        selected=levels(dat$Trinn),#
+        inline=TRUE#
+      ),#
+      h5("Klasse"),#
+      tags$div(class="multicol2", #
+        checkboxGroupInput(inputId="klasse",#
+          label=NULL,#
+          choiceNames=levels(dat$Klasse),#
+          choiceValues=levels(dat$Klasse),#
+          selected=levels(dat$Klasse),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Kjønn"),#
+      checkboxGroupInput(inputId="kjønn",#
+        label=NULL,#
+        choiceNames=nam(dat$Kj),#
+        choiceValues=val(dat$Kj),#
+        selected=val(dat$Kj),#
+        inline=TRUE#
+      ),#
+      h5("Fødselsår"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="år",#
+          label=NULL,#
+          choiceNames=nam(dat$F.aar),#
+          choiceValues=val(dat$F.aar),#
+          selected=val(dat$F.aar),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Fødselsmåned"),#
+      tags$div(class="multicol3", #
+        checkboxGroupInput(inputId="mnd",#
+          label=NULL,#
+          choiceNames=nam(dat$F.mnd),#
+          choiceValues=val(dat$F.mnd),#
+          selected=val(dat$F.mnd),#
+          inline=FALSE#
+        )#
+      ),#
+      h5("Velg responsvariabler [1, 61]"),#
+      textInput(inputId="spm", #
+        label=NULL, #
+        value="1, 3:5, 7, 9"#
+      )#
+    ),#
+    mainPanel(#
+        plotOutput("hist")#
+    )#
+  )#
+)#
+#
+server <- function(input, output) {#
+  output$hist <- renderPlot({#
+#
+    z <- paste0("c(", input$spm, ")")#
+    z <- eval(parse(text=z))#
+    spm <- paste0("X", z)#
+    sel <- dat[#
+       dat$Skole %in% c(input$skole) & #
+       dat$Trinn %in% c(input$trinn) & #
+       dat$Klasse %in% c(input$klasse) & #
+       dat$Kj %in% c(input$kjønn) & #
+       dat$F.aar %in% c(input$år) & #
+       dat$F.mnd %in% c(input$mnd),#
+       spm, drop=FALSE]#
+    barplot(prop.table(table(unlist(sel))), density=20, col="grey95", space=2/3)#
+#    plot(unlist(dat[1:input$num, spm]))#
+  })#
+}#
+shinyApp(ui = ui, server = server)
