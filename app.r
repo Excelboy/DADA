@@ -78,7 +78,7 @@ ui <- fluidPage(
         ),
         ###
         tabPanel("Utvalg 2",
-          h5("Skole"),
+          tags$div(class="topmar", h5("Skole")),
           tags$div(class="multicol", 
             checkboxGroupInput(inputId="skole2",
               label=NULL,
